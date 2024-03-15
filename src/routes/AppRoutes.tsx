@@ -24,7 +24,12 @@ export const Tab = createBottomTabNavigator();
 
 export const AppRoutes = () => {
     return (
-        <Tab.Navigator>
+        <Tab.Navigator
+            screenOptions={{
+                headerShown: false,
+                tabBarShowLabel: false,
+            }}
+          >
             <Tab.Screen
                 name="Home"
                 component={HomeRoutes}

@@ -11,7 +11,17 @@ interface Props {
 const CategoryItem = ({ category, handleSelectCategory, selectedCategory}: Props) => {
     const styles = StyleSheet.create({
         categoryItem: {
-            backgroundColor: category.color
+            backgroundColor: category.color,
+            paddingHorizontal: 10,
+            paddingVertical: 12,
+            marginRight: 10,
+            width: 100,
+            borderRadius: 50,
+        },
+        label: {
+            color: '#fff',
+            textAlign: 'center',
+            alignContent: 'center',
         }
     });
 
@@ -21,7 +31,7 @@ const CategoryItem = ({ category, handleSelectCategory, selectedCategory}: Props
           onPress={() => {
             handleSelectCategory(selectedCategory)}}
         >
-          <Text>{ category.label }</Text>
+          <Text style={styles.label}>{ category.label }</Text>
         </TouchableOpacity>
     );
 };
