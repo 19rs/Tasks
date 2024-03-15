@@ -12,7 +12,6 @@ const defaultOptions = {
 
 export const showError = (message: string) => {
   defaultOptions.backgroundColor = "#cc0000";
-  console.log('chamando o toast')
   Toast.show(message, defaultOptions);
 };
 

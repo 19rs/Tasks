@@ -13,7 +13,14 @@ export const HomeRoutes = () => {
                 name="Home"
                 component={Home}
                 options={{
-                    headerTitle: "Lista de Tarefas"
+                    headerTitle: "Lista de Tarefas",
+                    headerStyle: {
+                        backgroundColor: '#292d3e',
+                      },
+                      headerTintColor: '#ceff27',
+                      headerTitleStyle: {
+                        fontWeight: '500',
+                      },
                 }}
             />
         </Stack.Navigator>
@@ -29,13 +36,16 @@ export const AppRoutes = () => {
                 headerShown: false,
                 tabBarShowLabel: false,
             }}
+            
           >
             <Tab.Screen
                 name="Home"
                 component={HomeRoutes}
                 options={{
+                    tabBarActiveBackgroundColor: '#292d3e',
+                    tabBarInactiveBackgroundColor: '#3c3147',
                     tabBarIcon: () => (
-                        <MaterialIcons name="home" size={30} color="#4169E1"/>
+                        <MaterialIcons name="home" size={30} color="#ceff27"/>
                     ),
                 }}
             />
@@ -43,8 +53,10 @@ export const AppRoutes = () => {
                 name="User"
                 component={User}
                 options={{
+                    tabBarActiveBackgroundColor: '#292d3e',
+                    tabBarInactiveBackgroundColor: '#3c3147',
                     tabBarIcon: () => (
-                        <MaterialIcons name="person" size={30} color="#4169E1" />
+                        <MaterialIcons name="person" size={30} color="#ceff27" />
                     ),
                 }}
             />

@@ -26,6 +26,7 @@ const ItemCard = ({ task, handleRemoveTask, handleDoneTask }: Props) => {
 
     const LeftAction = () => {
         return (
+            !task.completed ?
             <View style={styles.swipeLeft}>
                 <MaterialIcons
                     name="done"
@@ -33,13 +34,13 @@ const ItemCard = ({ task, handleRemoveTask, handleDoneTask }: Props) => {
                     color="#fff"
                     onPress={() => handleDoneTask(task.id)}
                 />
-            </View>
+            </View> : null
         );
     };
 
     const RightAction = () => {
         return (
-            <View style={styles.swipeLeft}>
+            <View style={styles.swipeRight}>
                 <MaterialIcons
                     name="delete"
                     size={20}
@@ -49,6 +50,38 @@ const ItemCard = ({ task, handleRemoveTask, handleDoneTask }: Props) => {
             </View>
         );
     };
+
+    const styles = StyleSheet.create({
+        container: {
+            flex: 1,
+            flexDirection: 'row',
+            // backgroundColor: "#303030",
+            backgroundColor: task.completed ? '#186300' : '#303030',
+            alignItems: 'center',
+            paddingVertical: 10,
+            paddingLeft: 5,
+            marginBottom: 3,
+        },
+        title: {
+            color: '#fff',
+            fontSize: 18,
+        },
+        swipeLeft: {
+            flex: 1,
+            backgroundColor: 'green',
+            justifyContent: 'center',
+            paddingLeft: 12,
+            marginBottom: 3,
+        },
+        swipeRight: {
+            flex: 1,
+            backgroundColor: 'red',
+            alignItems: 'flex-end',
+            justifyContent: 'center',
+            paddingRight: 12,
+            marginBottom: 3,
+        }
+    })
 
     return (
         <Swipeable renderLeftActions={LeftAction} renderRightActions={RightAction}>
@@ -68,18 +101,5 @@ const ItemCard = ({ task, handleRemoveTask, handleDoneTask }: Props) => {
     );
 };
 
-const styles = StyleSheet.create({
-    container: {
-        backgroundColor: "#fff"
-    },
-    title: {
 
-    },
-    swipeLeft: {
-
-    },
-    swipeRight: {
-
-    }
-})
 export default ItemCard;

@@ -15,13 +15,16 @@ const CategoryItem = ({ category, handleSelectCategory, selectedCategory}: Props
             paddingHorizontal: 10,
             paddingVertical: 12,
             marginRight: 10,
-            width: 100,
+            width: 120,
             borderRadius: 50,
+            borderWidth: 2,
+            borderColor: selectedCategory === category.value ? 'white' : category.color,
         },
         label: {
             color: '#fff',
+            fontSize: 15,
             textAlign: 'center',
-            alignContent: 'center',
+            alignItems: 'center',
         }
     });
 
