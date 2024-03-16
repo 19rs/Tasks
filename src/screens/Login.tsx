@@ -18,7 +18,7 @@ const Login = () => {
         value={username}
         onChangeText={setUsername}
         autoCapitalize="none"
-        placeholder="Insira seu usuário - (Tá mockado)"
+        placeholder="MAX POWER   -   (Tá mockado)"
         placeholderTextColor={'#fff'}
       />
       <TextInput
@@ -64,7 +64,6 @@ const styles = StyleSheet.create({
   },
   button: {
     width: "100%",
-    // height: 50,
     paddingVertical: 15,
     backgroundColor: "#3c3147",
     borderWidth: 2,

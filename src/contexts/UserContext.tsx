@@ -91,7 +91,7 @@ export const UserContextProvider = ({ children }: UserProviderProps) => {
       const user: UserDTO = {
         id: 1,
         username: 'MAX POWER',
-        email: 'homer@duuh.com',
+        email: 'homer@doh.com',
         firstName: 'Homer',
         lastName: 'J. Simpson',
         gender: 'Male',

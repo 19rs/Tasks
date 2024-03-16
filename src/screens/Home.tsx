@@ -133,9 +133,7 @@ const Home = () => {
 
     return(
         <SafeAreaView style={styles.container}>
-            {/* <ScrollView contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}> */}
             <StatusBar style="auto" />
-                {/* <Text style={styles.hello}>Hello {user?.firstName} ! :D</Text> */}
                 <TextInput
                     style={styles.input}
                     placeholder={`Oi ${user?.firstName}! O que você quer fazer?`}
@@ -206,21 +204,18 @@ const Home = () => {
                         keyExtractor={(item) => item.id.toString()}
                     />
                 </View>
-                {/* <View style={{height: 270, marginBottom: 30}}> */}
-                    <FlatList
-                        style={{marginBottom: 20}}
-                        horizontal={false}
-                        data={filteredTasks}
-                        renderItem={({ item }) => (
-                            <ItemCard
-                                task={item}
-                                handleRemoveTask={() => { handleRemoveTask(item.id) }}
-                                handleDoneTask={() => { handleDoneTask(item.id) }}
-                            />
-                        )}
-                    />
-                {/* </View> */}
-            {/* </ScrollView> */}
+                <FlatList
+                    style={{marginBottom: 20}}
+                    horizontal={false}
+                    data={filteredTasks}
+                    renderItem={({ item }) => (
+                        <ItemCard
+                            task={item}
+                            handleRemoveTask={() => { handleRemoveTask(item.id) }}
+                            handleDoneTask={() => { handleDoneTask(item.id) }}
+                        />
+                    )}
+                />
         </SafeAreaView>
     );
 };
@@ -228,7 +223,6 @@ const Home = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        // height: '100%',
         paddingTop: 5,
         backgroundColor: '#252525',
         justifyContent: 'center',
@@ -267,10 +261,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         width: '80%',
         columnGap: 20,
-        marginBottom: 20,
+        marginBottom: 10,
     },
     categoryListFilter: {
-        // marginTop: 150,
         marginTop: 10,
         marginBottom: 5,
         height: 90,
