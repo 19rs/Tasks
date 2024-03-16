@@ -39,7 +39,7 @@ export const AppRoutes = () => {
             
           >
             <Tab.Screen
-                name="Home"
+                name="HomeRoutes"
                 component={HomeRoutes}
                 options={{
                     tabBarActiveBackgroundColor: '#292d3e',

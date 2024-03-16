@@ -61,6 +61,7 @@ const ItemCard = ({ task, handleRemoveTask, handleDoneTask }: Props) => {
             paddingVertical: 10,
             paddingLeft: 5,
             marginBottom: 3,
+            zIndex: 2,
         },
         title: {
             color: '#fff',

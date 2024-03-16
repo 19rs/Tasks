@@ -1,8 +1,7 @@
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Text, TextInput, StyleSheet, View, FlatList, ScrollView, KeyboardAvoidingView } from "react-native";
+import { Text, TextInput, StyleSheet, View, FlatList, ScrollView } from "react-native";
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../contexts/UserContext";
-import "react-native-get-random-values";
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import DropDownPicker from "react-native-dropdown-picker";
@@ -13,6 +12,7 @@ import { showError, showSuccess } from "../components/Toast";
 import ItemCard from "../components/ItemCard";
 import { Task } from "../types/Task";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { StatusBar } from "expo-status-bar";
 
 const Home = () => {
     const { user, getUser } = useContext(UserContext);
@@ -67,10 +67,10 @@ const Home = () => {
     const handleAddTask = async () => {
         if(taskInput.trim() !== '' && categoryValue) {
             const currentDate = new Date();
-            const currentTimeInMillis = currentDate.getTime();
+            const currentTimeInMillis = currentDate.getTime().toString();
 
             const newTaskList = [...taskList ?? []];
-            const data: Task = { id: currentTimeInMillis.toString(), title: taskInput, completed: false, category: categoryValue };
+            const data: Task = { id: currentTimeInMillis, title: taskInput, completed: false, category: categoryValue };
             newTaskList.push(data);
             
             storeTasks(newTaskList);
@@ -114,33 +114,31 @@ const Home = () => {
     const handleSelectCategory = async (type: string) => {
         setSelectedCategory(type)
 
-        let tasks:Task[] = [];
-
-        switch(type) {
-            case "all":
-                tasks = taskList.filter(task => !task.completed);
-                break;
-            case "done":
-                tasks = taskList.filter(task => task.completed);
-                break;
-            default:
-                tasks = taskList.filter(task => task.category === type)
-                break;
+        if(taskList) {
+            let tasks:Task[] = [];
+            switch(type) {
+                case "all":
+                    tasks = taskList.filter(task => !task.completed);
+                    break;
+                case "done":
+                    tasks = taskList.filter(task => task.completed);
+                    break;
+                default:
+                    tasks = taskList.filter(task => task.category === type)
+                    break;
+            }
+            setFilteredTasks(tasks);
         }
-        setFilteredTasks(tasks);
     };
 
     return(
-        <KeyboardAvoidingView style={{ flex: 1}}
-            behavior={'height'}
-            enabled={false}
-        >
         <SafeAreaView style={styles.container}>
             {/* <ScrollView contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}> */}
-                <Text style={styles.hello}>Hello {user?.firstName} ! :D</Text>
+            <StatusBar style="auto" />
+                {/* <Text style={styles.hello}>Hello {user?.firstName} ! :D</Text> */}
                 <TextInput
                     style={styles.input}
-                    placeholder="O que você quer fazer?"
+                    placeholder={`Oi ${user?.firstName}! O que você quer fazer?`}
                     placeholderTextColor={'#fff'}
                     value={taskInput}
                     onChangeText={setTaskInput}
@@ -208,7 +206,7 @@ const Home = () => {
                         keyExtractor={(item) => item.id.toString()}
                     />
                 </View>
-                <View style={{height: 270, marginBottom: 30}}>
+                {/* <View style={{height: 270, marginBottom: 30}}> */}
                     <FlatList
                         style={{marginBottom: 20}}
                         horizontal={false}
@@ -221,20 +219,20 @@ const Home = () => {
                             />
                         )}
                     />
-                </View>
+                {/* </View> */}
             {/* </ScrollView> */}
         </SafeAreaView>
-        </KeyboardAvoidingView>
     );
 };
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingTop: 50,
+        // height: '100%',
+        paddingTop: 5,
         backgroundColor: '#252525',
         justifyContent: 'center',
-        paddingHorizontal: 30,
+        paddingHorizontal: 20,
         rowGap: 10,
     },
     scroll: {
@@ -262,6 +260,7 @@ const styles = StyleSheet.create({
         color: "#fff",
         fontSize: 18,
         paddingLeft: 15,
+        zIndex: 10,
     },
     viewSelectCategory: {
         flexDirection: 'row',
@@ -269,10 +268,10 @@ const styles = StyleSheet.create({
         width: '80%',
         columnGap: 20,
         marginBottom: 20,
-        zIndex: 10,
     },
     categoryListFilter: {
-        marginTop: 150,
+        // marginTop: 150,
+        marginTop: 10,
         marginBottom: 5,
         height: 90,
     }

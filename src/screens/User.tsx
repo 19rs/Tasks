@@ -7,9 +7,6 @@ import { showError } from "../components/Toast";
 const User = () => {
   const { user, getUser, logout } = useContext(UserContext);
 
-  // useEffect(() => {
-  //   getUser()
-  // }, []);
 
   useEffect(() => {
     const getData = async () => {
@@ -27,24 +24,25 @@ const User = () => {
       <View style={ styles.viewImg }>
         <Image
             resizeMode="contain"
-            style={{ width: 250, height: 250 }}
+            style={{ width: 200, height: 200 }}
             source={{ uri: user?.image }}
         />
-        </View>
-        <View style={ styles.viewUsername }>
-          <Text style={ styles.username }>{user?.username}</Text>
-        </View>
-        <Text>{user?.firstName}</Text>
-        <Text>{user?.lastName}</Text>
+      </View>
+      <View style={ styles.viewUsername }>
+        <Text style={ styles.username }>{ user?.username }</Text>
+      </View>
+      
+      <Text style={ styles.info }>{user?.firstName} { user?.lastName } </Text>
+      {/* <Text style={ styles.info }>{ user?.lastName }</Text> */}
         
-        <Text>{user?.email}</Text>
+      <Text style={ styles.info }>{ user?.email} </Text>
 
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => logout()}
-        >
-          <Text style={styles.buttonText}>Logout</Text>
-        </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => logout()}
+      >
+        <Text style={styles.buttonText}>Logout</Text>
+      </TouchableOpacity>
       
     </SafeAreaView>
   );
@@ -55,13 +53,14 @@ export default User;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingVertical: 30,
+    backgroundColor: '#252525',
+    paddingVertical: 20,
     rowGap: 10,
     alignItems: 'center',
   },
   viewImg: {
-    width: 350,
-    height: 350,
+    width: 250,
+    height: 250,
     borderRadius: 350/2,
     backgroundColor: '#f8fafc',
     borderWidth: 3,
@@ -72,28 +71,37 @@ const styles = StyleSheet.create({
   viewUsername: {
     width: '90%',
     alignItems: 'center',
-    backgroundColor: '#f8fafc',
+    backgroundColor: '#292d3e',
     paddingHorizontal: 15,
-    paddingVertical: 10,
+    paddingVertical: 15,
     borderWidth: 2,
-    borderColor: '#e2e8f0',
-    // borderRadius: 5,
+    borderColor: '#3c3147',
     shadowColor: '#ccc',
     shadowOpacity: 0.5,
+    marginVertical: 10
     },
     username: {
       fontWeight: 'bold',
+      fontSize: 25,
+      color: '#ceff27',
+    },
+    info: {
       fontSize: 20,
+      color: '#fff',
     },
     button: {
       width: "80%",
-      height: 50,
-      backgroundColor: "#606060",
+      backgroundColor: "#ceff27",
+      borderWidth: 2,
+      borderColor: '#3c3147',
       justifyContent: "center",
       alignItems: "center",
-      marginVertical: 12,
+      marginTop: 20,
+      paddingVertical: 15
     },
     buttonText: {
-      color: "#fff",
+      color: "#3c3147",
+      fontSize: 18,
+      fontWeight: '600',
     },
 });

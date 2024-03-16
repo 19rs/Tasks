@@ -2,6 +2,7 @@ import { StyleSheet, TextInput, Text, TouchableOpacity } from "react-native";
 import React, { useContext, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { UserContext } from "../contexts/UserContext";
+import { StatusBar } from "expo-status-bar";
 
 const Login = () => {
   const { login } = useContext(UserContext);
@@ -10,13 +11,15 @@ const Login = () => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <StatusBar style="auto" />
       <Text style={styles.title}>LOGIN</Text>
       <TextInput
         style={styles.input}
         value={username}
         onChangeText={setUsername}
         autoCapitalize="none"
-        placeholder="Insira seu usuário"
+        placeholder="Insira seu usuário - (Tá mockado)"
+        placeholderTextColor={'#fff'}
       />
       <TextInput
         style={styles.input}
@@ -24,6 +27,7 @@ const Login = () => {
         onChangeText={setPassword}
         secureTextEntry
         placeholder="Insira sua senha"
+        placeholderTextColor={'#fff'}
       />
 
       <TouchableOpacity
@@ -41,28 +45,41 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    marginHorizontal: 10,
+    paddingHorizontal: 20,
+    rowGap: 10,
+    backgroundColor: '#252525',
   },
   input: {
     width: "100%",
     height: 50,
-    marginVertical: 12,
-    borderWidth: 1,
+    backgroundColor: '#292d3e',
+    color: '#fff',
     padding: 10,
+    paddingLeft: 15,
+    fontSize: 15,
+    minHeight: 50,
+    borderWidth: 1,
+    borderColor: '#000',
+    borderRadius: 8,
   },
   button: {
     width: "100%",
-    height: 50,
-    backgroundColor: "#606060",
+    // height: 50,
+    paddingVertical: 15,
+    backgroundColor: "#3c3147",
+    borderWidth: 2,
+    borderColor: '#292d3e',
     justifyContent: "center",
     alignItems: "center",
-    marginVertical: 12,
+    marginVertical: 30,
   },
   buttonText: {
-    color: "#fff",
+    color: "#ceff27",
+    fontSize: 18,
+    fontWeight: '600',
   },
   title: {
-    color: "#252525",
+    color: "#ceff27",
     fontSize: 26,
     fontWeight: "bold",
   },
