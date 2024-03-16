@@ -42,8 +42,8 @@ export const AppRoutes = () => {
                 name="HomeRoutes"
                 component={HomeRoutes}
                 options={{
-                    tabBarActiveBackgroundColor: '#292d3e',
-                    tabBarInactiveBackgroundColor: '#3c3147',
+                    tabBarActiveBackgroundColor: '#3c3147',
+                    tabBarInactiveBackgroundColor: '#292d3e',
                     tabBarIcon: () => (
                         <MaterialIcons name="home" size={30} color="#ceff27"/>
                     ),
@@ -53,8 +53,8 @@ export const AppRoutes = () => {
                 name="User"
                 component={User}
                 options={{
-                    tabBarActiveBackgroundColor: '#292d3e',
-                    tabBarInactiveBackgroundColor: '#3c3147',
+                    tabBarActiveBackgroundColor: '#3c3147',
+                    tabBarInactiveBackgroundColor: '#292d3e',
                     tabBarIcon: () => (
                         <MaterialIcons name="person" size={30} color="#ceff27" />
                     ),
